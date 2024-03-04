@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <title>Admin Panel</title>
+</head>
+
+<body>
+
+    <section id="sidebar">
+        <a href="#" class="brand">
+            <img src="Images/Vector.png">
+            <span class="dash">Bikers</span><span class="stack">Zone</span>
+
+        </a>
+        <ul class="side-menu top">
+            <li class="active">
+                <a href="#dashboard">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <!-- <li class="active">
+                <a href="#">
+                    <i class='bx bx-doughnut-chart'></i>
+                    <span class="text">Analytics</span>
+                </a>
+            </li> -->
+            <li class="active">
+                <a href="#category-section">
+                    <i class='bx bx-category-alt'></i>
+                    <span class="text">Categories</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="#">
+                    <i class='bx bxs-shopping-bag-alt'></i>
+                    <span class="text">Products</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="#">
+                    <i class='bx bxs-heart'></i>
+                    <span class="text">Favorites</span>
+                </a>
+            </li>
+
+
+            <li class="active">
+                <a href="#">
+                    <i class='bx bxs-time'></i>
+                    <span class="text">Schedule</span>
+                </a>
+            </li>
+            <!-- <li class="active">
+                <a href="#">
+                    <i class='bx bxs-contact'></i>
+                    <span class="text">Contact</span>
+                </a>
+            </li> -->
+
+        </ul>
+        <ul class="side-menu">
+            <li>
+                <a href="#">
+                    <i class='bx bx-cog'></i>
+                    <span class="text">Settings</span>
+                </a>
+            </li>
+            <li>
+                <a href="Login Page/login.html" class="logout">
+                    <i class='bx bx-log-out-circle'></i>
+                    <span class="text">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <section id="content">
+        <nav id="top-nav">
+            <i class='bx bx-menu'></i>
+            <form action="#">
+                <div class="form-input">
+                    <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+                    <input type="search" placeholder="Search">
+                </div>
+            </form>
+            <!-- <a href="#" class="notification">
+                <i class='bx bxs-bell'></i>
+                <span class="notification-count">30</span>
+            </a> -->
+            <a href="#" class="profile">
+                <img src="Images/orange.png">
+                <span class="admin-role">
+                    <h4>Moni Roy</h4>
+                    <p>Admin</p>
+                </span>
+                <i class='bx bx-chevron-down'></i>
+            </a>
+
+        </nav>
+        <main>
+            <div id="dashboard">
+                <div class="left">
+                    <h1>Dashboard</h1>
+                </div>
+                <a href="#" class="btn-download">
+                    <i class='bx bx-arrow-to-bottom'></i>
+                </a>
+            </div>
+            <ul class="box-info">
+                <li>
+                    <i class='bx bxs-group'></i>
+                    <span class="text">
+                        <p>Total User</p>
+                        <h3>40,689</h3>
+                        <p><i class='bx bx-trending-up'></i>8.59% Up from yesterday</p>
+                    </span>
+                </li>
+                <li>
+                    <i class='bx bxs-cart'></i>
+                    <span class="text">
+                        <p>Total Order</p>
+                        <h3>10,293</h3>
+                        <p><i class='bx bx-trending-down'></i>8.59% Up from yesterday</p>
+                    </span>
+                </li>
+                <li>
+                    <i class='bx bx-line-chart'></i>
+                    <span class="text">
+                        <p>Total Sales</p>
+                        <h3>RS 50,689</h3>
+                        <p><i class='bx bx-trending-up'></i>8.59% Up from yesterday</p>
+                    </span>
+                </li>
+                <li>
+                    <i class='bx bxs-hourglass'></i>
+                    <span class="text">
+                        <p>Total Pending</p>
+                        <h3>2040</h3>
+                        <p><i class='bx bx-trending-down'></i></i>8.59% Up from yesterday</p>
+                    </span>
+                </li>
+            </ul>
+            <div class="chart-container">
+                <canvas id="myChart"></canvas>
+            </div>
+
+            <div id="category-section">
+                <div class="left">
+                    <h1>Categories</h1>
+                </div>
+            </div>
+            <nav id="category-nav">
+                <a href="#cat-grid"><i class='bx bx-category-alt'></i></a>
+                <!-- <i class='bx bx-list-ul'></i> -->
+                <p>Sort by:<span><i class='bx bx-sort'></i></span></p>
+                <!-- <p><a class="all-category" href="#">View all</a></p> -->
+                <!-- <ul class="cat-list">
+                    <li>Bikes</li>
+                    <li>Parts and Accessories</li>
+                    <li>Safety Gear</li>
+                    <li>Riding Accessories</li>
+                    <li>Merchandise</li>
+                    <li>Brands and Manufacturer</li>
+                </ul> -->
+            </nav>
+            <section id="cat-grid">
+                <div class="cat-img">
+                    <img src="Images/1.avif" alt="Category 1">
+                    <div class="overlay">
+                        <div class="category-name">Helmet</div>
+                        <a href="Products/products.html" class="view-all">View All</a>
+                    </div>
+                </div>
+                <!-- <li class="category-list">
+                    <div class="cat-img">
+                        <img src="Images/1.avif" alt="Shoei">
+                    </div>
+                    <div class="caption">
+                        <h3>Product name</h3>
+                        <p>Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi?</p>
+                        <p>Price: Rs xx.xx</p>
+                        <p>Stock: xx units</p>
+                        <div class="actions">
+                            <button><i class="bx bx-edit-alt"></i></button>
+                            <button><i class="bx bx-trash"></i></button>
+
+                        </div>
+                    </div> -->
+
+                <div class="cat-img">
+                    <img src="Images/2.avif" alt="Category 1">
+                    <div class="overlay">
+                        <div class="category-name">Repair Kit</div>
+                        <a href="Products/products.html" class="view-all">View All</a>
+                    </div>
+                </div>
+
+                <div class="cat-img">
+                    <img src="Images/8.avif" alt="Category 1">
+                    <div class="overlay">
+                        <div class="category-name">Bags</div>
+                        <a href="Products/products.html" class="view-all">View All</a>
+                    </div>
+                </div>
+
+
+                <div class="cat-img">
+                    <img src="Images/4.avif" alt="Category 1">
+                    <div class="overlay">
+                        <div class="category-name">Water Bottle</div>
+                        <a href="Products/products.html" class="view-all">View All</a>
+                    </div>
+                </div>
+
+                <div class="cat-img">
+                    <img src="Images/5.avif" alt="Category 1">
+                    <div class="overlay">
+                        <div class="category-name">Locks</div>
+                        <a href="Products/products.html" class="view-all">View All</a>
+                    </div>
+                </div>
+
+                <div class="cat-img">
+                    <img src="Images/6.avif" alt="Category 1">
+                    <div class="overlay">
+                        <div class="category-name">Lights</div>
+                        <a href="Products/products.html" class="view-all">View All</a>
+                    </div>
+                </div>
+
+                <div class="cat-img">
+                    <img src="Images/wallpaper.avif" alt="Category 1">
+                    <div class="overlay">
+                        <div class="category-name">Mirror</div>
+                        <a href="Products/products.html" class="view-all">View All</a>
+                    </div>
+                </div>
+
+                <div class="cat-img">
+                    <img src="Images/7.avif" alt="Category 1">
+                    <div class="overlay">
+                        <div class="category-name">Category 8</div>
+                        <a href="Products/products.html" class="view-all">View All</a>
+                    </div>
+                </div>
+
+
+            </section>
+
+        </main>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

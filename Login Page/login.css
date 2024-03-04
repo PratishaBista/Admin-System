@@ -1,0 +1,93 @@
+:root {
+  --poppins: "Poppins", sans-serif;
+  --light-blue: #cfe8ff;
+  --grey: #eee;
+  --bluish-white: #f0f8ff;
+  --light: #fefefe;
+  --blue: #3c91e6;
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--poppins);
+  background: var(--light);
+}
+
+.container {
+  width: 300px;
+  padding: 20px;
+  border: none;
+  background: var(--bluish-white);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+  margin: 0 0 30px 0;
+  text-align: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+label {
+  margin: 15px 0 0 0;
+  font-style: normal;
+  font-size: 15px;
+}
+
+#error-msg {
+  font-size: 12px;
+  margin-top: auto;
+  text-align: center;
+  color: rgb(219, 23, 23);
+  display: none;
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+}
+input[type="email"],
+input[type="password"],
+button {
+  padding: 5px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+button {
+  background: var(--blue);
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 80px;
+  margin: 0 auto;
+  display: block;
+}
+
+button:hover {
+  background-color:#2982db;
+}
+
+/* #forgotPw {
+  color: rgb(50, 50, 203);
+  font-weight: lighter;
+  font-size: 13px;
+  margin-top: 0;
+  text-align: center;
+  cursor: pointer;
+} */
+
+.container img {
+  width: 40px;
+  height: auto;
+  filter: invert(100%);
+  margin-bottom: 20px;
+  align-items: center;
+}
