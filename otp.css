@@ -1,0 +1,94 @@
+:root {
+    --poppins: "Poppins", sans-serif;
+    --light-blue: #cfe8ff;
+    --grey: #eee;
+    --bluish-white: #f0f8ff;
+    --light: #fefefe;
+    --blue: #3c91e6;
+    --lato: "Lato", sans-serif;
+  }
+  
+  body,
+  html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--lato);
+    background: var(--light);
+  }
+  
+  .container {
+    width: 300px;
+    padding: 20px;
+    border: none;
+    text-align: center;
+    background-color: var(--bluish-white);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .bxs-check-shield {
+    font-size: 48px;
+    color: #000;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    padding: 10px;
+    background: var(--blue);
+  }
+  
+  .container h2 {
+    margin: 0;
+    text-align: center;
+    color: var(--blue);
+  }
+  
+  .container p {
+    margin: 20px 0 50px 0;
+    text-align: center;
+  }
+  
+  .container p .send-again {
+    color: var(--blue);
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 5px;
+  }
+  a {
+    text-decoration: none;
+  }
+  .otpContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  
+  .digit {
+    width: 70%;
+    height: 30px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 20px;
+    outline: none;
+  }
+  
+  .digit:focus {
+    border-color: var(--blue);
+  }
+  .btn-verify {
+    margin-top: 50px;
+    padding: 8px 8px;
+    text-align: center;
+    width: 20%;
+    border: none;
+    background: var(--blue);
+    color: var(--light);
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .btn-verify:hover {
+    background: #4884c1;
+  }
+  
