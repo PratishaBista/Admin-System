@@ -183,13 +183,10 @@ function addRow(category) {
   `;
   testsTable.appendChild(row);
 
-
   const deleteBtn = row.querySelector(".delete-btn");
 
   deleteBtn.addEventListener("click", () => deleteRow(row));
-
 }
-
 
 async function deleteRow(row) {
   const categoryId = row.id.split("-")[2];
@@ -198,7 +195,6 @@ async function deleteRow(row) {
     row.remove();
   }
 }
-
 
 document.addEventListener("DOMContentLoaded", () => {
   populateCategories();
@@ -247,6 +243,7 @@ async function addProduct(product) {
   }
 }
 
+
 async function deleteProduct(productId) {
   try {
     const response = await fetch(
@@ -289,18 +286,20 @@ async function addProductRow(product) {
 
   async function getCategoryName() {
     try {
-      const response = await fetch('https://codynn.com/bikerszone/api/category');
+      const response = await fetch(
+        "https://codynn.com/bikerszone/api/category"
+      );
       const categories = await response.json();
 
-      document.getElementById('choose-cat').innerHTML = '';
+      document.getElementById("choose-cat").innerHTML = "";
 
-      categories.forEach(category => {
-        const option = document.createElement('option');
+      categories.forEach((category) => {
+        const option = document.createElement("option");
         option.value = category.id;
         option.textContent = category.category_name;
-        document.getElementById('choose-cat').appendChild(option);
+        document.getElementById("choose-cat").appendChild(option);
       });
-    } catch(error) {
+    } catch (error) {
       console.error(error);
     }
   }
@@ -328,16 +327,15 @@ async function addProductRow(product) {
     )
   );
   saveProdBtn.addEventListener("click", () =>
-    saveProductRow(
-      prodRow,
-      nameProdSpan,
-      categoryProdSpan,
-      priceProdSpan,
-      descriptionProdSpan,
-      imageProdSpan
-    )
+    saveProductRow(prodRow, product.id)
   );
-  deleteProdBtn.addEventListener("click", () => deleteProductRow(prodRow));
+
+  deleteProdBtn.addEventListener("click", async () => {
+    const productId = product.id;
+    await deleteProduct(productId);
+    prodRow.remove();
+  });
+
   cancelProdBtn.addEventListener("click", () =>
     cancelEditProductRow(
       prodRow,
@@ -350,7 +348,14 @@ async function addProductRow(product) {
   );
 }
 
-function editProductRow(row, nameSpan, categorySpan, priceSpan, descriptionSpan, imageSpan) {
+function editProductRow(
+  row,
+  nameSpan,
+  categorySpan,
+  priceSpan,
+  descriptionSpan,
+  imageSpan
+) {
   row.classList.add("editing");
   nameSpan.contentEditable = true;
   categorySpan.contentEditable = true;
@@ -363,8 +368,13 @@ function editProductRow(row, nameSpan, categorySpan, priceSpan, descriptionSpan,
   row.querySelector(".cancel-prod-btn").classList.remove("prod-hidden");
 }
 
-async function saveProductRow(row, nameSpan, categorySpan, priceSpan, descriptionSpan, imageSpan) {
-  const productId = row.id.split("-")[2];
+async function saveProductRow(row, productId) {
+  const nameSpan = row.querySelector("td:first-child");
+  const categorySpan = row.querySelector("td:nth-child(2)");
+  const priceSpan = row.querySelector("td:nth-child(3)");
+  const descriptionSpan = row.querySelector("td:nth-child(4)");
+  const imageSpan = row.querySelector("td:nth-child(5)");
+
   const productName = nameSpan.innerText.trim();
   const productCategory = categorySpan.innerText.trim();
   const productPrice = priceSpan.innerText.trim();
@@ -392,7 +402,6 @@ async function saveProductRow(row, nameSpan, categorySpan, priceSpan, descriptio
     if (!response.ok) {
       throw new Error("Failed to update product");
     }
-
   } catch (error) {
     console.error("Error updating product:", error);
   }
@@ -409,28 +418,14 @@ async function saveProductRow(row, nameSpan, categorySpan, priceSpan, descriptio
   row.querySelector(".cancel-prod-btn").classList.add("prod-hidden");
 }
 
-async function deleteProductRow(row) {
-  const productId = row.id.split("-")[2];
-  try {
-    const response = await fetch(
-      `https://codynn.com/bikerszone/api/product/${productId}`,
-      {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    if (!response.ok) {
-      throw new Error("Failed to delete product");
-    }
-    row.remove(); 
-  } catch (error) {
-    console.error("Error deleting product:", error);
-  }
-}
-
-function cancelEditProductRow(row, nameSpan, categorySpan, priceSpan, descriptionSpan, imageSpan) {
+async function cancelEditProductRow(
+  row,
+  nameSpan,
+  categorySpan,
+  priceSpan,
+  descriptionSpan,
+  imageSpan
+) {
   row.classList.remove("editing");
   nameSpan.contentEditable = false;
   categorySpan.contentEditable = false;
@@ -442,7 +437,6 @@ function cancelEditProductRow(row, nameSpan, categorySpan, priceSpan, descriptio
   row.querySelector(".delete-prod-btn").classList.remove("prod-hidden");
   row.querySelector(".cancel-prod-btn").classList.add("prod-hidden");
 }
-
 document.getElementById("add-prod").addEventListener("click", function () {
   document.querySelector(".prod-form-wrap").classList.remove("prod-hidden");
 });
@@ -480,6 +474,7 @@ document.getElementById("create-prod").addEventListener("click", async function 
 
 populateProducts();
 
+//---------function to Populate Product--------
 async function populateProducts() {
   try {
     const products = await fetchProducts();
@@ -488,3 +483,51 @@ async function populateProducts() {
     console.error("Error populating products:", error);
   }
 }
+
+// PROFILE
+async function getProfile() {
+  try {
+    const token =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjksImlhdCI6MTcxMDAzOTMxOSwiZXhwIjoxNzEyNjMxMzE5fQ.YuBrGdvLDdHtToZiQ9zKklIMf2Fb_8tqRjlSVLuI0ds";
+    const response = await fetch("https://codynn.com/bikerszone/api/profile", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+  // });
+    const profileInfo = await response.json();
+    console.log(profileInfo);
+
+    const adminProfile = document.querySelector("#top-nav .profile");
+
+    adminProfile.innerHTML = "";
+
+    const adminImg = document.createElement("img");
+    adminImg.src = profileInfo.profilePicture;
+    adminImg.alt = profileInfo.username || "Profile Picture";
+
+    const adminRole = document.createElement("span");
+    adminRole.classList.add("admin-role");
+
+    const adminName = document.createElement("h4");
+    adminName.textContent = profileInfo.username || "Unknown";
+
+    const adminDesc = document.createElement("p");
+    adminDesc.textContent = profileInfo.role || "Role not specified";
+
+    adminRole.appendChild(adminName);
+    adminRole.appendChild(adminDesc);
+
+    adminProfile.appendChild(adminImg);
+    adminProfile.appendChild(adminRole);
+  } catch (error) {
+    console.error("Error fetching profile:", error);
+  }
+}
+
+
+getProfile();
